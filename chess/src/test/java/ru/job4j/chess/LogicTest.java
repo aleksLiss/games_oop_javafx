@@ -17,7 +17,8 @@ public class LogicTest {
         FigureNotFoundException exception = assertThrows(FigureNotFoundException.class, () -> {
             logic.move(Cell.C1, Cell.H6);
         });
-        assertThat(exception.getMessage()).isEqualTo("Figure not found on the board.");
+        assertThat(exception.getMessage())
+                .isEqualTo("Figure not found on the board.");
     }
 
     @Test
@@ -29,7 +30,8 @@ public class LogicTest {
         OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
             logic.move(Cell.C8, Cell.D7);
         });
-        assertThat(exception.getMessage()).isEqualTo("Cell has already been occupied other figure.");
+        assertThat(exception.getMessage())
+                .isEqualTo("Cell has already been occupied other figure.");
     }
 
     @Test
@@ -40,6 +42,7 @@ public class LogicTest {
         ImpossibleMoveException exception = assertThrows(ImpossibleMoveException.class, () -> {
             logic.move(Cell.C8, Cell.A8);
         });
-        assertThat(exception.getMessage()).isEqualTo("Could not way by diagonal from C8 to A8");
+        assertThat(exception.getMessage())
+                .isEqualTo("Could not way by diagonal from C8 to A8");
     }
 }
