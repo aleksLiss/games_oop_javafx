@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BishopBlackTest {
 
-
     @Test
     void whenCreateBishopBlackThenPositionC8() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C8);
@@ -50,7 +49,6 @@ class BishopBlackTest {
         Cell[] expected = new Cell[]{Cell.F2, Cell.E3, Cell.D4, Cell.C5};
         assertThat(expected).isEqualTo(result);
     }
-
 
     @Test
     void whenMoveBishopBlackFromC8ThenNewPositionE6() {
