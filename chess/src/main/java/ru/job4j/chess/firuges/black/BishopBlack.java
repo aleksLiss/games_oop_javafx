@@ -25,8 +25,8 @@ public class BishopBlack implements Figure {
         }
         int size = Math.abs(dest.getX() - this.position.getX());
         Cell[] steps = new Cell[size];
-        int deltaX = getDeltas(position, dest)[0];
-        int deltaY = getDeltas(position, dest)[1];
+        int deltaX = (dest.getX() - this.position.getX()) > 0 ? 1 : -1;
+        int deltaY = (dest.getY() - this.position.getY()) > 0 ? 1: -1;
         int x = position.getX();
         int y = position.getY();
         for (int index = 0; index < size; index++) {
@@ -38,22 +38,8 @@ public class BishopBlack implements Figure {
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
-        int startX = source.getX();
-        int startY = source.getY();
-        int finishX = dest.getX();
-        int finishY = dest.getY();
-        int deltaX, deltaY;
-        deltaX = getDeltas(source, dest)[0];
-        deltaY = getDeltas(source, dest)[1];
-        while (startX != finishX
-                || startY != finishY) {
-            startX += deltaX;
-            startY += deltaY;
-            if (startY > 7 || startX > 7) {
-                break;
-            }
-        }
-        return startX == finishX && startY == finishY;
+        return (dest.getX() - this.position.getX())
+                == (dest.getY() - this.position.getY());
     }
 
     @Override
@@ -61,25 +47,4 @@ public class BishopBlack implements Figure {
         return new BishopBlack(dest);
     }
 
-    private static int[] getDeltas(Cell source, Cell dest) {
-        int startX = source.getX();
-        int startY = source.getY();
-        int finishX = dest.getX();
-        int finishY = dest.getY();
-        int deltaX, deltaY;
-        if (finishX < startX && finishY < startY) {
-            deltaX = -1;
-            deltaY = -1;
-        } else if (finishX > startX && finishY < startY) {
-            deltaX = 1;
-            deltaY = -1;
-        } else if (finishX > startX && finishY > startY) {
-            deltaX = 1;
-            deltaY = 1;
-        } else {
-            deltaX = -1;
-            deltaY = 1;
-        }
-        return new int[]{deltaX, deltaY};
-    }
 }
