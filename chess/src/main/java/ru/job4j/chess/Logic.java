@@ -22,12 +22,8 @@ public final class Logic {
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
         for (Cell cell : steps) {
-            int cellX = cell.getX();
-            int cellY = cell.getY();
             for (Figure figure : figures) {
-                int figureX = figure.position().getX();
-                int figureY = figure.position().getY();
-                if (cellX == figureX && cellY == figureY) {
+                if (cell.equals(figure.position())) {
                     throw new OccupiedCellException("Cell has already been occupied other figure.");
                 }
             }
